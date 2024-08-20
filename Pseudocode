@@ -1,0 +1,39 @@
+def assess_surplus_energy(prosumer_data):
+    EP = prosumer_data['total_energy_production']
+    EC = prosumer_data['total_energy_consumption']
+    surplus_energy = EP - EC
+    
+    if surplus_energy > 0:
+        notify_prosumer(surplus_energy)
+        return surplus_energy
+    else:
+        return 0
+
+def authorize_and_list_energy(prosumer, surplus_energy):
+    if prosumer.authorizes_sale():
+        price = prosumer.set_price()
+        contract_period = prosumer.choose_contract_period()
+        create_listing(prosumer, surplus_energy, price, contract_period)
+
+def consumer_purchase(consumer, listing):
+    consumer.select_listing(listing)
+    contract_period = consumer.choose_contract_period(listing)
+    deduct_payment(consumer, listing.price)
+    notify_KE_for_delivery(listing, consumer)
+    store_transaction_details(consumer, listing, contract_period)
+    return True
+
+def monthly_billing_cycle(consumer, listing):
+    while not contract_ended(listing):
+        deduct_payment(consumer, listing.price)
+        credit_prosumer(listing.prosumer, listing.price)
+        relay_energy(KE_grid, listing, consumer)
+    notify_contract_completion(listing.prosumer, consumer)
+# Main flow
+surplus_energy = assess_surplus_energy(prosumer_data)
+if surplus_energy > 0:
+    authorize_and_list_energy(prosumer, surplus_energy)
+consumer = get_active_consumer()
+listing = find_matching_listing(consumer)
+if consumer_purchase(consumer, listing):
+    monthly_billing_cycle(consumer, listing)
