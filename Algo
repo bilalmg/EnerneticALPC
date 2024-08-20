@@ -1,0 +1,51 @@
+1. Assess Surplus Energy
+•	Input: Real-time energy production and consumption data from the prosumer.
+•	Process:
+1.	Retrieve the prosumer's total energy production (EP) and total consumption (EC) data.
+2.	Calculate surplus energy:
+Surplus Energy=EP−EC
+3.	If Surplus > 0, proceed to step 2; otherwise, end the process.
+2. Inform Prosumer
+•	Input: Surplus energy data.
+•	Process:
+1.	Notify the prosumer of the detected surplus energy via the platform's dashboard and/or mobile app.
+2.	Present the option to list the surplus energy on the platform.
+3. Prosumer Authorization & Pricing
+•	Input: Prosumer’s authorization, price, and contract time period.
+•	Process:
+1.	Await prosumer's authorization to sell the surplus energy.
+2.	If authorized, prompt the prosumer to set a price per kWh and select a contract time period (1, 2, 3, or 6 months).
+3.	Store the authorization, price, and time period in the platform's database.
+4. Listing Surplus Energy
+•	Input: Authorized surplus energy details.
+•	Process:
+1.	Create a listing on the platform with the surplus energy amount, price, and contract time period.
+2.	Make the listing visible to potential consumers.
+
+
+
+
+5. Consumer Selection & Purchase
+•	Input: Consumer browsing the platform.
+•	Process:
+1.	Display available surplus energy listings to the consumer.
+2.	Allow the consumer to select a listing, choose the contract time period, and confirm the purchase.
+3.	Deduct the consumer’s payment for the first month from their linked account.
+4.	Store the transaction details (consumer, prosumer, energy amount, price, contract time) in the database.
+6. Energy Delivery via KE Grid
+•	Input: Completed transaction details.
+•	Process:
+1.	Notify KE of the transaction and instruct them to relay the specified amount of energy from the prosumer’s surplus to the consumer.
+2.	Monitor the energy delivery and ensure compliance with the agreed-upon contract terms.
+7. Post-Transaction
+•	Input: Monthly billing cycle.
+•	Process:
+1.	At the beginning of each subsequent month, deduct the payment for that month from the consumer's account.
+2.	Credit the prosumer’s account with the payment minus any platform fees.
+3.	Continue energy delivery as per the contract until the time period ends.
+8. Contract Completion
+•	Input: Contract end date.
+•	Process:
+1.	On the final day of the contract, notify both the prosumer and consumer of the contract completion.
+2.	Remove the energy listing from the platform.
+3.	Optionally prompt the prosumer to create a new listing if additional surplus energy is available.
