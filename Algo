@@ -49,3 +49,5 @@ Surplus Energy=EP−EC
 1.	On the final day of the contract, notify both the prosumer and consumer of the contract completion.
 2.	Remove the energy listing from the platform.
 3.	Optionally prompt the prosumer to create a new listing if additional surplus energy is available.
+
+End of Algo
